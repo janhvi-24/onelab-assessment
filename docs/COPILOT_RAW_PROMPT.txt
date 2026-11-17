@@ -1,0 +1,33 @@
+Build a complete, beginner-friendly Python + Streamlit payment reconciliation application for the Onelab AI Fitness Assessment.
+
+BUSINESS PROBLEM
+A payments platform records transactions immediately. The bank settles them in batches 1–2 days later. At month end, platform records and bank settlements should reconcile. Build an auditable tool that shows why they do not.
+
+REQUIRED DELIVERABLES
+1. A Streamlit UI with a month-end cutoff selector, configurable monetary tolerance, CSV upload for platform transactions and bank settlements, sample data loaded by default, KPI summary, exception table, transaction-level reconciliation table, source-data preview, and CSV downloads.
+2. A deterministic sample dataset that deliberately includes all four required gap types:
+   - A platform transaction dated in November that settles in December (after the November 30 cutoff).
+   - Several individual rounding differences each within a 0.01 tolerance, but whose summed difference exceeds 0.01.
+   - A duplicate row in one dataset (choose bank settlements and make the duplicate detectable).
+   - A refund whose original payment transaction ID does not exist.
+3. A reconciliation engine that matches by transaction ID, checks date cutoff, identifies duplicate IDs, orphan refunds, missing settlements, amount mismatches, next-month settlements and aggregate rounding drift. Do not silently discard duplicate records.
+4. Automated pytest tests for each seeded discrepancy plus a clean exact-match case.
+5. README with setup/run/test instructions, assumptions, CSV schemas, architecture, deployment instructions for Streamlit Community Cloud, and three concise production limitations.
+6. Keep code modular enough to test. Validate required CSV columns and handle malformed dates/amounts gracefully.
+
+ASSUMPTIONS TO STATE
+- Month-end cutoff is inclusive.
+- Transaction ID is the primary matching key.
+- Use INR sample data.
+- Default row and aggregate tolerance is INR 0.01.
+- A settlement after the cutoff is a next-period settlement, not necessarily a missing payment.
+- Refunds must point to an existing original payment.
+- Duplicate settlement transaction IDs are exceptions and must not be counted as clean one-to-one matches.
+
+QUALITY BAR
+- Clear, readable code with useful comments.
+- No hard-coded answer labels that depend on row order.
+- Do not claim production-grade accounting correctness.
+- Make the UI understandable to a finance operations user.
+- Include commands to run locally and tests.
+Before finishing, explain design choices and list any known edge cases.

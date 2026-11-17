@@ -1,0 +1,10 @@
+transaction_id,event_type,original_transaction_id,amount,currency,transaction_date
+TXN-1001,payment,,125.0,INR,2026-11-02
+TXN-1002,payment,,249.5,INR,2026-11-08
+TXN-1003,payment,,10.004,INR,2026-11-12
+TXN-1004,payment,,10.004,INR,2026-11-13
+TXN-1005,payment,,10.004,INR,2026-11-14
+TXN-1006,payment,,875.0,INR,2026-11-30
+TXN-1007,payment,,499.0,INR,2026-11-20
+REF-2001,refund,TXN-DOES-NOT-EXIST,-75.0,INR,2026-11-24
+TXN-1008,payment,,65.0,INR,2026-11-25
